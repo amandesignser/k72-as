@@ -1,14 +1,15 @@
-import React, { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollTrigger } from "gsap/all";
+import { useRef } from "react";
 
 const Agence = () => {
   gsap.registerPlugin(ScrollTrigger);
 
   const imageDivRef = useRef(null);
   const imageRef = useRef(null);
-  const imageArry = [
+
+  const imageArray = [
     "../public/images/k72-project-image.jpg",
     "../public/images/k72-project-image-2.jpg",
     "../public/images/k72-project-image-3.jpg",
@@ -17,68 +18,69 @@ const Agence = () => {
     "../public/images/k72-project-image-6.jpg",
     "../public/images/k72-project-image-7.jpg",
   ];
-  useGSAP(() => {
+
+  useGSAP(function () {
     gsap.to(imageDivRef.current, {
       scrollTrigger: {
         trigger: imageDivRef.current,
-        start: "top 25%",
-        end: "top -100%",
-        markers: true,
+        // markers: true,
+        start: "top 28%",
+        end: "top -70%",
         pin: true,
         pinSpacing: true,
         pinReparent: true,
         pinType: "transform",
-        scrub: 1,
+        scrub: 1, // smooth scrubbing with 1s easing
         anticipatePin: 1,
         invalidateOnRefresh: true,
-
         onUpdate: (elem) => {
           let imageIndex;
           if (elem.progress < 1) {
-            imageIndex = Math.floor(elem.progress * imageArry.length);
+            imageIndex = Math.floor(elem.progress * imageArray.length);
           } else {
-            imageIndex = imageArry.length - 1;
+            imageIndex = imageArray.length - 1;
           }
-          imageRef.current.src = imageArry[imageIndex];
+          imageRef.current.src = imageArray[imageIndex];
         },
       },
     });
   });
+
   return (
     <div className="parent">
-      <div id="page1" className="py-1">
+      <div id="page1" className="py-1 ">
         <div
           ref={imageDivRef}
-          className="h-[20vw] rounded-[20px] w-[15vw] absolute top-96 left-[30.33vw]  overflow-hidden"
+          className="absolute overflow-hidden lg:h-[20vw] h-[30vw] lg:rounded-3xl rounded-xl lg:w-[15vw] w-[25vw] lg:top-96 -top-80 lg:left-[30vw] left-[30vw]"
         >
           <img
             ref={imageRef}
-            src="../public/images/k72-project-image.jpg"
+            className="h-full object-cover w-full"
+            src="https://k72.ca/uploads/teamMembers/Carl_480x640-480x640.jpg"
             alt=""
-            className="w-full h-full object-cover"
           />
         </div>
-        <div className="font-[font2] text-black relative">
-          <div className="mt-[30vw] ">
-            <h1 className="text-[20vw] text-center uppercase leading-[17.5vw] selection:bg-[#D2FD50]">
-              SEVEN7Y
-              <br />
-              TWO
+        <div className="relative font-[font2]">
+          <div className="lg:mt-[55vh] mt-[30vh]">
+            <h1 className="text-[20vw] text-center uppercase leading-[18vw]">
+              Soixan7e <br />
+              Douze
             </h1>
           </div>
-          <div className="pl-[40%] mt-20">
-            <p className="text-6xl">
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We’re
-              inquisitive and open-minded, and we make sure creativity crowds
-              out ego from every corner. A brand is a living thing, with values,
-              a personality and a story. If we ignore that, we can achieve
-              short-term success, but not influence that goes the distance. We
-              bring that perspective to every brand story we help tell.
+          <div className="lg:pl-[40%] lg:mt-20 mt-4 p-3">
+            <p className="lg:text-6xl text-xl leading-tight">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              Notre curiosité nourrit notre créativité. On reste humbles et on
+              dit non aux gros egos, même le vôtre. Une marque est vivante. Elle
+              a des valeurs, une personnalité, une histoire. Si on oublie ça, on
+              peut faire de bons chiffres à court terme, mais on la tue à long
+              terme. C’est pour ça qu’on s’engage à donner de la perspective,
+              pour bâtir des marques influentes.
             </p>
           </div>
         </div>
       </div>
-      <div id="page2" className="h-screen w-full bg-amber-500"></div>
+      <div id="page2" className=" h-screen"></div>
     </div>
   );
 };

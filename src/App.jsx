@@ -1,16 +1,19 @@
+import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import Projects from "./pages/Work";
 import Agence from "./pages/Agence";
-import { Routes, Route } from "react-router-dom";
-import Work from "./pages/Work";
+import Projects from "./pages/Projects";
+import Navbar from "./components/Navigation/Navbar";
+import FullScreenNav from "./components/Navigation/FullScreenNav";
 
 const App = () => {
   return (
-    <div>
+    <div className="overflow-x-hidden">
+      <Navbar />
+      <FullScreenNav />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/work" element={<Work />} />
         <Route path="/agence" element={<Agence />} />
+        <Route path="/projects" element={<Projects />} />
       </Routes>
     </div>
   );

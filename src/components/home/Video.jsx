@@ -2,14 +2,13 @@ import React from "react";
 
 const Video = () => {
   return (
-    <div>
+    <div className="h-full w-full">
       <video
+        className="h-full w-full object-cover"
         autoPlay
         loop
         muted
-        className="w-full h-full object-cover"
-        src="/videos/k72-video.mp4"
-        type="video/mp4"
+        src="../../../public/videos/k72-video.mp4"
       ></video>
     </div>
   );
