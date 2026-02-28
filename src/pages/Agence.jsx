@@ -10,13 +10,13 @@ const Agence = () => {
   const imageRef = useRef(null);
 
   const imageArray = [
-    "../public/images/k72-project-image.jpg",
-    "../public/images/k72-project-image-2.jpg",
-    "../public/images/k72-project-image-3.jpg",
-    "../public/images/k72-project-image-4.jpg",
-    "../public/images/k72-project-image-5.jpg",
-    "../public/images/k72-project-image-6.jpg",
-    "../public/images/k72-project-image-7.jpg",
+    "/images/k72-project-image.jpg",
+    "/images/k72-project-image-2.jpg",
+    "/images/k72-project-image-3.jpg",
+    "/images/k72-project-image-4.jpg",
+    "/images/k72-project-image-5.jpg",
+    "/images/k72-project-image-6.jpg",
+    "/images/k72-project-image-7.jpg",
   ];
 
   useGSAP(function () {
